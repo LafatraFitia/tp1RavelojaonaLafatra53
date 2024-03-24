@@ -24,16 +24,29 @@ public class CustomerManager {
     private EntityManager em;
     
     
+    /**
+     * 
+     * @return la liste des customers
+     */
     public List<Customer> getAllCustomers() {
         Query query = em.createNamedQuery("Customer.findAll");
         return query.getResultList();
     }
  
+    /**
+     * 
+     * @param customer le client à updater
+     * @return le client fraichement updaté
+     */
     @Transactional
     public Customer update(Customer customer) {
         return em.merge(customer);
     }
  
+    /**
+     * 
+     * @param customer le client à persister dans notre base de donnée (modification ou insertion)
+     */
      @Transactional
     public void persist(Customer customer) {
         em.persist(customer);
