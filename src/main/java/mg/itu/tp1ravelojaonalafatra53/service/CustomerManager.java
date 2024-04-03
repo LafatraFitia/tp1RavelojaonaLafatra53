@@ -12,6 +12,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 import mg.itu.tp1ravelojaonalafatra53.entities.Customer;
+import mg.itu.tp1ravelojaonalafatra53.entities.Discount;
 
 
 /**
@@ -51,4 +52,12 @@ public class CustomerManager {
     public void persist(Customer customer) {
         em.persist(customer);
     }
+
+    public Customer findById(int idCustomer) {  
+      return em.find(Customer.class, idCustomer);  
+    }
+    
+    public Discount findById(String code) {
+  return em.find(Discount.class, code);
+}
 }
